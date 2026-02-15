@@ -210,16 +210,24 @@ h6 {
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 700px;
+    max-width: 800px;
+    /* Increased slightly but constrained */
     padding: var(--space-2xl) 0;
+    margin: 0 auto;
+    /* Center it if needed, though previously left-aligned */
 }
 
 .hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2rem, 5vw, 4rem);
+    /* Smaller minimum size */
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: var(--space-md);
     letter-spacing: -0.02em;
+    max-width: 100%;
+    /* Ensure it respects container */
+    overflow-wrap: break-word;
+    /* Prevent overflow */
 }
 
 .hero p {
@@ -534,7 +542,7 @@ footer {
     transform: translateY(0);
 }
 
-/* Responsive */
+
 @media (max-width: 1024px) {
 
     .about-grid,
@@ -549,25 +557,42 @@ footer {
 }
 
 @media (max-width: 768px) {
+
+    /* Container adjustments */
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    /* Navigation */
+    .nav-container {
+        padding: 1rem 0;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
     .menu-toggle {
         display: block;
         z-index: 1001;
+        padding: 0.5rem;
     }
 
     .nav-links {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 80%;
+        width: 85%;
         max-width: 320px;
         height: 100vh;
         background: white;
         flex-direction: column;
         justify-content: flex-start;
-        padding: 6rem 2rem 2rem;
+        align-items: stretch;
+        padding: 5rem 2rem 2rem;
         transition: right var(--transition-slow);
         box-shadow: var(--shadow-xl);
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .nav-links.active {
@@ -576,35 +601,176 @@ footer {
 
     .nav-links a:not(.btn) {
         font-size: 1.125rem;
+        padding: 0.5rem 0;
     }
 
     .nav-cta {
         width: 100%;
+        margin-top: 1rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: 85vh;
+        padding: 6rem 0 4rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-content {
+        padding: 0;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.15;
+    }
+
+    .hero p {
+        font-size: 1.0625rem;
+        margin-bottom: 2.5rem;
+        line-height: 1.65;
     }
 
     .hero-btns {
         flex-direction: column;
+        gap: 1rem;
     }
 
     .hero-btns .btn {
         width: 100%;
+        padding: 1.125rem 1.75rem;
+        font-size: 1rem;
+        border-radius: var(--radius-lg);
     }
 
+    /* Sections */
+    section {
+        padding: 4rem 0;
+    }
+
+    .section-head {
+        margin-bottom: 3rem;
+    }
+
+    .section-head h2 {
+        font-size: 2rem;
+    }
+
+    .section-head .subtitle {
+        font-size: 1.0625rem;
+    }
+
+    /* Services */
     .services-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .service-card {
+        padding: 1.75rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.125rem;
+    }
+
+    /* About */
+    .about-grid {
+        gap: 2rem;
+    }
+
+    .about-text h2 {
+        font-size: 1.875rem;
     }
 
     .about-stats {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
+    .stat-item {
+        padding: 1.5rem 1rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .certifications {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .cert-badge {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.8125rem;
+    }
+
+    /* Contact */
     .contact-wrapper {
-        padding: 2rem;
+        padding: 1.75rem;
+        gap: 2rem;
+    }
+
+    .contact-info {
+        gap: 1.5rem;
+    }
+
+    .info-item {
+        gap: 1rem;
+    }
+
+    .info-item i {
+        width: 44px;
+        height: 44px;
+        font-size: 1.125rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .contact-form .btn {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 2rem 0;
     }
 
     .footer-content {
         flex-direction: column;
         gap: 1.5rem;
         text-align: center;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .section-head h2 {
+        font-size: 1.75rem;
+    }
+
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-wrapper {
+        padding: 1.5rem;
+    }
+
+    .btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.875rem;
     }
 }
